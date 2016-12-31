@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">NDK Experiments</string>
+    <string name="hello">Hello from Firoz</string>
+</resources>
