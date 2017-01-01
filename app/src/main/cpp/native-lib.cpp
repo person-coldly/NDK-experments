@@ -13,8 +13,17 @@ extern "C" {
 //*They must contain the name of the Java class they belong to.
 
     JNIEXPORT jstring JNICALL
-    Java_uk_co_firozansari_ndkexperiments_MainActivity_getndkstring(JNIEnv *jenv, jobject instance) {
+    Java_uk_co_firozansari_ndkexperiments_MainActivity_getndkstring(JNIEnv *env, jobject instance, jstring string) {
 
-        return jenv->NewStringUTF("Hello from NDK");
+        const char *name = (*env).GetStringUTFChars(string, NULL);
+        char msg[60] = "Hello ";
+        jstring result;
+
+        strcat(msg, name);
+        (*env).ReleaseStringUTFChars(string, name);
+        puts(msg);
+        result = (*env).NewStringUTF(msg);
+        return result;
+
     }
 }
