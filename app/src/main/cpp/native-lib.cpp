@@ -6,6 +6,7 @@
 // as name mangling. Due to name mangling, calling your C++ functions from Java
 // code will lead to errors. To avoid the errors, you can disable name mangling
 // by defining your functions inside an extern "C" block.
+
 extern "C" {
 //The names of C++ functions that are accessible via JNI must have the following format:
 //* They must have a Java_ prefix.
@@ -26,4 +27,11 @@ extern "C" {
         return result;
 
     }
+
+    JNIEXPORT jstring JNICALL
+    Java_uk_co_firozansari_ndkexperiments_MainActivity_getNativeKey(JNIEnv *env, jobject instance) {
+
+        return env->NewStringUTF("TmF0aXZlNWVjcmV0UEBzc3cwcmQy");
+    }
+
 }

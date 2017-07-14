@@ -11,4 +11,12 @@
         android:layout_margin="20dp"
         android:text="@string/hello" />
 
+    <TextView
+        android:id="@+id/key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:text="" />
+
 </LinearLayout>

@@ -2,7 +2,7 @@ package uk.co.firozansari.ndkexperiments;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.util.Base64;
 import android.widget.TextView;
 
 /**
@@ -12,20 +12,26 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "NATIVE_APP";
-    TextView textView;
+    TextView hellotv, keytv;
 
     static {
         System.loadLibrary("native-lib");
     }
 
-    private native String getndkstring(String value);
+    public native String getndkstring(String value);
+    public native String getNativeKey();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = (TextView) findViewById(R.id.tv);
-        textView.setText(getndkstring("World"));
+
+        hellotv = (TextView) findViewById(R.id.tv);
+        hellotv.setText(getndkstring("World"));
+
+        keytv = (TextView) findViewById(R.id.key);
+        String keyText = new String(Base64.decode(getNativeKey(), Base64.DEFAULT));
+        keytv.setText(keyText);
 
     }
 }
