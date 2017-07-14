@@ -30,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
         hellotv.setText(getndkstring("World"));
 
         keytv = (TextView) findViewById(R.id.key);
-        String keyText = new String(Base64.decode(getNativeKey(), Base64.DEFAULT));
-        keytv.setText(keyText);
+        keytv.setText(Utils.decode(getNativeKey()));
 
     }
 }
